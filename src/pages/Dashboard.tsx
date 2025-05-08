@@ -95,7 +95,6 @@ const ProjectsManagement: React.FC = () => {
     title: "",
     description: "",
     image: "",
-    imageFile: null as File | null,
     imagePreview: "",
     codeLink: "",
     demoLink: ""
@@ -107,7 +106,6 @@ const ProjectsManagement: React.FC = () => {
       title: "",
       description: "",
       image: "",
-      imageFile: null,
       imagePreview: "",
       codeLink: "",
       demoLink: ""
@@ -120,9 +118,8 @@ const ProjectsManagement: React.FC = () => {
     setFormData({
       title: project.title,
       description: project.description,
-      image: typeof project.image === 'string' ? project.image : '',
-      imageFile: null,
-      imagePreview: typeof project.image === 'string' ? project.image : '',
+      image: project.image,
+      imagePreview: project.image,
       codeLink: project.codeLink,
       demoLink: project.demoLink
     });
@@ -139,8 +136,8 @@ const ProjectsManagement: React.FC = () => {
     if (imagePreview) {
       setFormData(prev => ({ 
         ...prev, 
-        imageFile: e.target.files?.[0] || null,
-        imagePreview 
+        imagePreview,
+        image: imagePreview
       }));
     }
   };
@@ -153,26 +150,22 @@ const ProjectsManagement: React.FC = () => {
       return;
     }
     
+    const projectData = {
+      title: formData.title,
+      description: formData.description,
+      image: formData.imagePreview || formData.image,
+      codeLink: formData.codeLink,
+      demoLink: formData.demoLink
+    };
+    
     if (projectToEdit) {
       updateProject({ 
         ...projectToEdit,
-        title: formData.title,
-        description: formData.description,
-        image: formData.imageFile || formData.image,
-        imagePreview: formData.imagePreview,
-        codeLink: formData.codeLink,
-        demoLink: formData.demoLink
+        ...projectData
       });
       toast.success("Project updated successfully!");
     } else {
-      addProject({
-        title: formData.title,
-        description: formData.description,
-        image: formData.imageFile || formData.imagePreview,
-        imagePreview: formData.imagePreview,
-        codeLink: formData.codeLink,
-        demoLink: formData.demoLink
-      });
+      addProject(projectData);
       toast.success("Project added successfully!");
     }
     
@@ -198,7 +191,7 @@ const ProjectsManagement: React.FC = () => {
           <Card key={project.id}>
             <div className="relative h-40 overflow-hidden">
               <img 
-                src={typeof project.image === 'string' ? project.image : project.imagePreview} 
+                src={project.image} 
                 alt={project.title} 
                 className="w-full h-full object-cover"
               />
@@ -349,7 +342,6 @@ const AchievementsManagement: React.FC = () => {
   const [formData, setFormData] = useState({
     title: "",
     image: "",
-    imageFile: null as File | null,
     imagePreview: ""
   });
   
@@ -358,7 +350,6 @@ const AchievementsManagement: React.FC = () => {
     setFormData({
       title: "",
       image: "",
-      imageFile: null,
       imagePreview: ""
     });
     setIsOpen(true);
@@ -368,9 +359,8 @@ const AchievementsManagement: React.FC = () => {
     setAchievementToEdit(achievement);
     setFormData({
       title: achievement.title,
-      image: typeof achievement.image === 'string' ? achievement.image : '',
-      imageFile: null,
-      imagePreview: typeof achievement.image === 'string' ? achievement.image : ''
+      image: achievement.image,
+      imagePreview: achievement.image
     });
     setIsOpen(true);
   };
@@ -385,8 +375,8 @@ const AchievementsManagement: React.FC = () => {
     if (imagePreview) {
       setFormData(prev => ({ 
         ...prev, 
-        imageFile: e.target.files?.[0] || null,
-        imagePreview 
+        imagePreview,
+        image: imagePreview
       }));
     }
   };
@@ -399,20 +389,19 @@ const AchievementsManagement: React.FC = () => {
       return;
     }
     
+    const achievementData = {
+      title: formData.title,
+      image: formData.imagePreview || formData.image
+    };
+    
     if (achievementToEdit) {
       updateAchievement({ 
         ...achievementToEdit,
-        title: formData.title,
-        image: formData.imageFile || formData.image,
-        imagePreview: formData.imagePreview
+        ...achievementData
       });
       toast.success("Achievement updated successfully!");
     } else {
-      addAchievement({
-        title: formData.title,
-        image: formData.imageFile || formData.imagePreview,
-        imagePreview: formData.imagePreview
-      });
+      addAchievement(achievementData);
       toast.success("Achievement added successfully!");
     }
     
@@ -438,7 +427,7 @@ const AchievementsManagement: React.FC = () => {
           <Card key={achievement.id}>
             <div className="relative h-40 overflow-hidden">
               <img 
-                src={typeof achievement.image === 'string' ? achievement.image : achievement.imagePreview} 
+                src={achievement.image} 
                 alt={achievement.title} 
                 className="w-full h-full object-cover"
               />

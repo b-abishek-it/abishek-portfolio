@@ -7,17 +7,15 @@ export type Project = {
   id: string;
   title: string;
   description: string;
-  image: string | File;
+  image: string;
   codeLink: string;
   demoLink: string;
-  imagePreview?: string;
 };
 
 export type Achievement = {
   id: string;
   title: string;
-  image: string | File;
-  imagePreview?: string;
+  image: string;
 };
 
 export type Message = {
@@ -216,7 +214,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [state]);
   
-  // Handle image file uploads
+  // Handle image file uploads - now converted to return image URLs instead of File objects
   const handleImageChange = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return "";
@@ -250,9 +248,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       type: "ADD_PROJECT", 
       payload: { 
         ...project, 
-        id,
-        // Convert File object to URL string if necessary
-        image: project.imagePreview || project.image
+        id
       } 
     });
   }, []);
@@ -260,11 +256,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateProject = useCallback((project: Project) => {
     dispatch({ 
       type: "UPDATE_PROJECT", 
-      payload: {
-        ...project,
-        // Convert File object to URL string if necessary
-        image: project.imagePreview || project.image
-      }
+      payload: project
     });
   }, []);
   
@@ -279,9 +271,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       type: "ADD_ACHIEVEMENT", 
       payload: { 
         ...achievement, 
-        id,
-        // Convert File object to URL string if necessary
-        image: achievement.imagePreview || achievement.image
+        id
       } 
     });
   }, []);
@@ -289,11 +279,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateAchievement = useCallback((achievement: Achievement) => {
     dispatch({ 
       type: "UPDATE_ACHIEVEMENT", 
-      payload: {
-        ...achievement,
-        // Convert File object to URL string if necessary
-        image: achievement.imagePreview || achievement.image
-      }
+      payload: achievement
     });
   }, []);
   
