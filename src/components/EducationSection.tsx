@@ -40,20 +40,20 @@ const EducationSection: React.FC = () => {
         <h2 className="section-title text-center mx-auto mb-12">Education</h2>
         
         <div className="max-w-3xl mx-auto">
-          <div className="relative border-l-2 border-dashed border-portfolio-primary pl-10 pb-6">
+          <div className="space-y-8">
             {educationList.map((edu, index) => (
               <div 
                 key={edu.id}
-                className="mb-10 relative animate-slide-in"
+                className="relative animate-slide-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Timeline node */}
-                <div className="absolute -left-[42px] top-0 w-8 h-8 bg-portfolio-primary rounded-full flex items-center justify-center">
+                <div className="absolute left-0 top-0 w-8 h-8 bg-portfolio-primary rounded-full flex items-center justify-center">
                   <span className="text-white font-medium text-sm">{edu.id}</span>
                 </div>
                 
                 {/* Content */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <div className="ml-12 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                   <h3 className="text-xl font-bold text-portfolio-dark dark:text-white mb-2">
                     {edu.degree}
                   </h3>

@@ -25,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 213 94% 48%;
+    --accent: 213 94% 68%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -124,3 +124,4 @@
     @apply px-3 py-1 rounded-full text-sm font-medium bg-portfolio-primary/10 text-portfolio-primary;
   }
 }
+

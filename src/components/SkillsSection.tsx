@@ -1,108 +1,55 @@
 
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-type Skill = {
-  name: string;
-  level: number;
-};
-
-type SkillCategory = {
-  name: string;
-  id: string;
-  skills: Skill[];
-};
 
 const SkillsSection: React.FC = () => {
-  const skillCategories: SkillCategory[] = [
-    {
-      name: "Programming Languages",
-      id: "programming",
-      skills: [
-        { name: "Python", level: 80 },
-        { name: "Java", level: 75 }
-      ]
-    },
-    {
-      name: "Web Development",
-      id: "web",
-      skills: [
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 85 },
-        { name: "JavaScript", level: 80 }
-      ]
-    },
-    {
-      name: "Databases",
-      id: "db",
-      skills: [
-        { name: "SQL", level: 70 },
-        { name: "MongoDB", level: 65 }
-      ]
-    },
-    {
-      name: "Version Control",
-      id: "vc",
-      skills: [
-        { name: "Git/GitHub", level: 85 }
-      ]
-    }
-  ];
-  
-  const additionalSkills = [
-    "React",
-    "MERN Stack",
-    "TypeScript",
+  const skills = [
+    "React", 
+    "MERN Stack", 
+    "TypeScript", 
     "Responsive Design",
-    "Tailwind CSS",
-    "Node.js",
-    "Prompt Engineering",
+    "Tailwind CSS", 
+    "Node.js", 
+    "Prompt Engineering", 
     "API Integration"
   ];
   
+  const categories = {
+    "Programming Languages": ["Python", "Java"],
+    "Web Development": ["HTML", "CSS", "JavaScript"],
+    "Databases": ["SQL", "MongoDB"],
+    "Version Control": ["Git/GitHub"]
+  };
+  
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="skills" className="py-20">
       <div className="container mx-auto px-6">
         <h2 className="section-title text-center mx-auto mb-12">My Skills</h2>
         
-        <Tabs defaultValue="programming" className="max-w-3xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-            {skillCategories.map((category) => (
-              <TabsTrigger key={category.id} value={category.id}>
-                {category.name}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          
-          {skillCategories.map((category) => (
-            <TabsContent key={category.id} value={category.id} className="animate-fade-in">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {category.skills.map((skill, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
-                    <div className="flex justify-between mb-2">
-                      <h4 className="font-semibold text-portfolio-dark dark:text-white">
-                        {skill.name}
-                      </h4>
-                      <span className="text-sm text-portfolio-primary">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                      <div 
-                        className="bg-portfolio-primary h-2.5 rounded-full transition-all duration-1000 ease-in-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {Object.entries(categories).map(([category, categorySkills]) => (
+            <div 
+              key={category} 
+              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
+            >
+              <h3 className="text-lg font-semibold mb-4 text-portfolio-primary">{category}</h3>
+              <ul className="space-y-2">
+                {categorySkills.map(skill => (
+                  <li key={skill} className="flex items-center">
+                    <div className="w-2 h-2 bg-portfolio-primary rounded-full mr-2"></div>
+                    <span className="text-gray-700 dark:text-gray-300">{skill}</span>
+                  </li>
                 ))}
-              </div>
-            </TabsContent>
+              </ul>
+            </div>
           ))}
-        </Tabs>
+        </div>
         
-        <div className="flex flex-wrap justify-center gap-2 mt-12">
-          {additionalSkills.map((skill, index) => (
-            <span key={index} className="skill-badge">
+        <div className="flex flex-wrap justify-center gap-3">
+          {skills.map((skill) => (
+            <span 
+              key={skill} 
+              className="skill-badge"
+            >
               {skill}
             </span>
           ))}

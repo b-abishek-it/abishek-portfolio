@@ -6,8 +6,8 @@ import { ArrowDown } from "lucide-react";
 const HomeSection: React.FC = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 pb-0">
-      <div className="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
-        <div className="w-full text-center md:text-left animate-fade-in">
+      <div className="container mx-auto px-6 py-16 flex flex-col items-center">
+        <div className="w-full text-center animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="block">Hi, I'm</span>
             <span className="text-portfolio-primary">Abishek B</span>
@@ -21,7 +21,7 @@ const HomeSection: React.FC = () => {
             Crafting innovative digital solutions with modern technologies.
           </p>
           
-          <div className="flex justify-center md:justify-start space-x-4">
+          <div className="flex justify-center space-x-4">
             <a href="#about">
               <Button className="flex items-center gap-2">
                 Explore My Work <ArrowDown size={16} />
