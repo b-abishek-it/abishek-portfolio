@@ -17,11 +17,11 @@ const AboutSection: React.FC = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="md:w-1/2 animate-fade-in">
-            <div className="relative overflow-hidden rounded-lg shadow-lg">
+            <div className="relative overflow-hidden rounded-full shadow-lg w-64 h-64 mx-auto">
               <img 
                 src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=700" 
                 alt="Abishek coding"
-                className="w-full h-auto rounded-lg"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>

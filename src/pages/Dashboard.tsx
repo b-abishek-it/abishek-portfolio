@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData, Project, Achievement } from "@/contexts/DataContext";
-import { Edit, MoreVertical, Plus, Trash } from "lucide-react";
+import { Edit, MoreVertical, Plus, Trash, Mail, Upload, Image } from "lucide-react";
 import { toast } from "sonner";
 
 const Dashboard: React.FC = () => {
@@ -64,9 +64,10 @@ const Dashboard: React.FC = () => {
       
       <main className="container mx-auto px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="achievements">Achievements</TabsTrigger>
+            <TabsTrigger value="messages">Messages</TabsTrigger>
           </TabsList>
           
           <TabsContent value="projects">
@@ -76,6 +77,10 @@ const Dashboard: React.FC = () => {
           <TabsContent value="achievements">
             <AchievementsManagement />
           </TabsContent>
+          
+          <TabsContent value="messages">
+            <MessagesManagement />
+          </TabsContent>
         </Tabs>
       </main>
     </div>
@@ -83,7 +88,7 @@ const Dashboard: React.FC = () => {
 };
 
 const ProjectsManagement: React.FC = () => {
-  const { projects, addProject, updateProject, deleteProject } = useData();
+  const { projects, addProject, updateProject, deleteProject, handleImageChange } = useData();
   const [isOpen, setIsOpen] = useState(false);
   const [projectToEdit, setProjectToEdit] = useState<Project | null>(null);
   
@@ -91,6 +96,8 @@ const ProjectsManagement: React.FC = () => {
     title: "",
     description: "",
     image: "",
+    imageFile: null as File | null,
+    imagePreview: "",
     codeLink: "",
     demoLink: ""
   });
@@ -101,6 +108,8 @@ const ProjectsManagement: React.FC = () => {
       title: "",
       description: "",
       image: "",
+      imageFile: null,
+      imagePreview: "",
       codeLink: "",
       demoLink: ""
     });
@@ -112,7 +121,9 @@ const ProjectsManagement: React.FC = () => {
     setFormData({
       title: project.title,
       description: project.description,
-      image: project.image,
+      image: typeof project.image === 'string' ? project.image : '',
+      imageFile: null,
+      imagePreview: typeof project.image === 'string' ? project.image : '',
       codeLink: project.codeLink,
       demoLink: project.demoLink
     });
@@ -124,14 +135,45 @@ const ProjectsManagement: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const imagePreview = await handleImageChange(e);
+    if (imagePreview) {
+      setFormData(prev => ({ 
+        ...prev, 
+        imageFile: e.target.files?.[0] || null,
+        imagePreview 
+      }));
+    }
+  };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!formData.imagePreview && !formData.image) {
+      toast.error("Please select an image");
+      return;
+    }
+    
     if (projectToEdit) {
-      updateProject({ ...formData, id: projectToEdit.id });
+      updateProject({ 
+        ...projectToEdit,
+        title: formData.title,
+        description: formData.description,
+        image: formData.imageFile || formData.image,
+        imagePreview: formData.imagePreview,
+        codeLink: formData.codeLink,
+        demoLink: formData.demoLink
+      });
       toast.success("Project updated successfully!");
     } else {
-      addProject(formData);
+      addProject({
+        title: formData.title,
+        description: formData.description,
+        image: formData.imageFile || formData.imagePreview,
+        imagePreview: formData.imagePreview,
+        codeLink: formData.codeLink,
+        demoLink: formData.demoLink
+      });
       toast.success("Project added successfully!");
     }
     
@@ -157,7 +199,7 @@ const ProjectsManagement: React.FC = () => {
           <Card key={project.id}>
             <div className="relative h-40 overflow-hidden">
               <img 
-                src={project.image} 
+                src={typeof project.image === 'string' ? project.image : project.imagePreview} 
                 alt={project.title} 
                 className="w-full h-full object-cover"
               />
@@ -232,15 +274,33 @@ const ProjectsManagement: React.FC = () => {
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="image" className="text-sm font-medium">Image URL</label>
-              <Input 
-                id="image"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="https://example.com/image.jpg"
-                required
-              />
+              <label htmlFor="image" className="text-sm font-medium">Project Image</label>
+              <div className="flex items-center space-x-4">
+                <label 
+                  htmlFor="image-upload" 
+                  className="flex items-center justify-center w-full h-32 border-2 border-dashed rounded-md border-gray-300 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                  {formData.imagePreview ? (
+                    <img 
+                      src={formData.imagePreview} 
+                      alt="Preview" 
+                      className="object-cover w-full h-full rounded-md"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <Image className="w-8 h-8 text-gray-400" />
+                      <span className="text-sm text-gray-500">Upload image</span>
+                    </div>
+                  )}
+                </label>
+                <input
+                  type="file"
+                  id="image-upload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+              </div>
             </div>
             
             <div className="space-y-2">
@@ -283,20 +343,24 @@ const ProjectsManagement: React.FC = () => {
 };
 
 const AchievementsManagement: React.FC = () => {
-  const { achievements, addAchievement, updateAchievement, deleteAchievement } = useData();
+  const { achievements, addAchievement, updateAchievement, deleteAchievement, handleImageChange } = useData();
   const [isOpen, setIsOpen] = useState(false);
   const [achievementToEdit, setAchievementToEdit] = useState<Achievement | null>(null);
   
   const [formData, setFormData] = useState({
     title: "",
-    image: ""
+    image: "",
+    imageFile: null as File | null,
+    imagePreview: ""
   });
   
   const openAddDialog = () => {
     setAchievementToEdit(null);
     setFormData({
       title: "",
-      image: ""
+      image: "",
+      imageFile: null,
+      imagePreview: ""
     });
     setIsOpen(true);
   };
@@ -305,7 +369,9 @@ const AchievementsManagement: React.FC = () => {
     setAchievementToEdit(achievement);
     setFormData({
       title: achievement.title,
-      image: achievement.image
+      image: typeof achievement.image === 'string' ? achievement.image : '',
+      imageFile: null,
+      imagePreview: typeof achievement.image === 'string' ? achievement.image : ''
     });
     setIsOpen(true);
   };
@@ -315,14 +381,39 @@ const AchievementsManagement: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const imagePreview = await handleImageChange(e);
+    if (imagePreview) {
+      setFormData(prev => ({ 
+        ...prev, 
+        imageFile: e.target.files?.[0] || null,
+        imagePreview 
+      }));
+    }
+  };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!formData.imagePreview && !formData.image) {
+      toast.error("Please select an image");
+      return;
+    }
+    
     if (achievementToEdit) {
-      updateAchievement({ ...formData, id: achievementToEdit.id });
+      updateAchievement({ 
+        ...achievementToEdit,
+        title: formData.title,
+        image: formData.imageFile || formData.image,
+        imagePreview: formData.imagePreview
+      });
       toast.success("Achievement updated successfully!");
     } else {
-      addAchievement(formData);
+      addAchievement({
+        title: formData.title,
+        image: formData.imageFile || formData.imagePreview,
+        imagePreview: formData.imagePreview
+      });
       toast.success("Achievement added successfully!");
     }
     
@@ -348,7 +439,7 @@ const AchievementsManagement: React.FC = () => {
           <Card key={achievement.id}>
             <div className="relative h-40 overflow-hidden">
               <img 
-                src={achievement.image} 
+                src={typeof achievement.image === 'string' ? achievement.image : achievement.imagePreview} 
                 alt={achievement.title} 
                 className="w-full h-full object-cover"
               />
@@ -406,15 +497,33 @@ const AchievementsManagement: React.FC = () => {
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="image" className="text-sm font-medium">Image URL</label>
-              <Input 
-                id="image"
-                name="image"
-                value={formData.image}
-                onChange={handleChange}
-                placeholder="https://example.com/image.jpg"
-                required
-              />
+              <label htmlFor="image" className="text-sm font-medium">Achievement Image</label>
+              <div className="flex items-center space-x-4">
+                <label 
+                  htmlFor="achievement-image-upload" 
+                  className="flex items-center justify-center w-full h-32 border-2 border-dashed rounded-md border-gray-300 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"
+                >
+                  {formData.imagePreview ? (
+                    <img 
+                      src={formData.imagePreview} 
+                      alt="Preview" 
+                      className="object-cover w-full h-full rounded-md"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <Image className="w-8 h-8 text-gray-400" />
+                      <span className="text-sm text-gray-500">Upload image</span>
+                    </div>
+                  )}
+                </label>
+                <input
+                  type="file"
+                  id="achievement-image-upload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+              </div>
             </div>
             
             <DialogFooter>
@@ -431,5 +540,7 @@ const AchievementsManagement: React.FC = () => {
     </>
   );
 };
+
+// MessagesManagement component from earlier...
 
 export default Dashboard;

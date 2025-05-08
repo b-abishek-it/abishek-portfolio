@@ -40,7 +40,7 @@ const EducationSection: React.FC = () => {
         <h2 className="section-title text-center mx-auto mb-12">Education</h2>
         
         <div className="max-w-3xl mx-auto">
-          <div className="relative border-l-2 border-portfolio-primary pl-10 pb-6">
+          <div className="relative border-l-2 border-dashed border-portfolio-primary pl-10 pb-6">
             {educationList.map((edu, index) => (
               <div 
                 key={edu.id}

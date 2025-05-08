@@ -7,19 +7,7 @@ const HomeSection: React.FC = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 pb-0">
       <div className="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 md:pr-8 animate-fade-in">
-          {/* Profile image */}
-          <div className="relative mb-6 md:mb-0 w-64 h-64 mx-auto md:mx-0 overflow-hidden rounded-full border-4 border-portfolio-primary shadow-lg">
-            <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=500" 
-              alt="Abishek B Profile"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-portfolio-primary/30 to-transparent" />
-          </div>
-        </div>
-        
-        <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <div className="w-full text-center md:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="block">Hi, I'm</span>
             <span className="text-portfolio-primary">Abishek B</span>

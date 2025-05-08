@@ -1,13 +1,44 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { toast } from "sonner";
+import { useData } from "@/contexts/DataContext";
 
 const ContactSection: React.FC = () => {
+  const { addMessage } = useData();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form handling logic would go here
-    alert("Message sent! (Demo only)");
+    
+    // Add message to the data context
+    addMessage({
+      id: Date.now().toString(),
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      date: new Date().toISOString(),
+      read: false
+    });
+    
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: ""
+    });
+    
+    toast.success("Message sent successfully!");
   };
   
   return (
@@ -66,6 +97,9 @@ const ContactSection: React.FC = () => {
                 <input 
                   type="text" 
                   id="name" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-portfolio-primary focus:border-transparent dark:bg-gray-800"
                   required
                 />
@@ -76,6 +110,9 @@ const ContactSection: React.FC = () => {
                 <input 
                   type="email" 
                   id="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-portfolio-primary focus:border-transparent dark:bg-gray-800"
                   required
                 />
@@ -85,6 +122,9 @@ const ContactSection: React.FC = () => {
                 <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
                 <textarea 
                   id="message" 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={5}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-portfolio-primary focus:border-transparent dark:bg-gray-800"
                   required

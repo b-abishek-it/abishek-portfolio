@@ -68,9 +68,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
                 portfolio: {
-                    primary: '#3A86FF',
-                    secondary: '#4361EE',
-                    accent: '#8B5CF6',
+                    primary: '#1E40AF',
+                    secondary: '#2563EB',
+                    accent: '#3B82F6',
                     light: '#F8F9FA',
                     dark: '#212529'
                 }

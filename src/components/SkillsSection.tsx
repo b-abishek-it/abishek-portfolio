@@ -49,6 +49,17 @@ const SkillsSection: React.FC = () => {
     }
   ];
   
+  const additionalSkills = [
+    "React",
+    "MERN Stack",
+    "TypeScript",
+    "Responsive Design",
+    "Tailwind CSS",
+    "Node.js",
+    "Prompt Engineering",
+    "API Integration"
+  ];
+  
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
@@ -90,14 +101,11 @@ const SkillsSection: React.FC = () => {
         </Tabs>
         
         <div className="flex flex-wrap justify-center gap-2 mt-12">
-          <span className="skill-badge">React</span>
-          <span className="skill-badge">MERN Stack</span>
-          <span className="skill-badge">TypeScript</span>
-          <span className="skill-badge">Responsive Design</span>
-          <span className="skill-badge">Tailwind CSS</span>
-          <span className="skill-badge">Node.js</span>
-          <span className="skill-badge">Prompt Engineering</span>
-          <span className="skill-badge">API Integration</span>
+          {additionalSkills.map((skill, index) => (
+            <span key={index} className="skill-badge">
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
     </section>
