@@ -27,10 +27,17 @@ export type Message = {
   read: boolean;
 };
 
+export type Skill = {
+  id: string;
+  name: string;
+  category: string;
+};
+
 type DataState = {
   projects: Project[];
   achievements: Achievement[];
   messages: Message[];
+  skills: Skill[];
 };
 
 type DataAction =
@@ -43,12 +50,16 @@ type DataAction =
   | { type: "DELETE_ACHIEVEMENT"; payload: string }
   | { type: "ADD_MESSAGE"; payload: Message }
   | { type: "DELETE_MESSAGE"; payload: string }
-  | { type: "MARK_MESSAGE_READ"; payload: string };
+  | { type: "MARK_MESSAGE_READ"; payload: string }
+  | { type: "ADD_SKILL"; payload: Skill }
+  | { type: "UPDATE_SKILL"; payload: Skill }
+  | { type: "DELETE_SKILL"; payload: string };
 
 type DataContextType = {
   projects: Project[];
   achievements: Achievement[];
   messages: Message[];
+  skills: Skill[];
   addProject: (project: Omit<Project, "id">) => void;
   updateProject: (project: Project) => void;
   deleteProject: (id: string) => void;
@@ -58,6 +69,9 @@ type DataContextType = {
   addMessage: (message: Omit<Message, "id">) => void;
   deleteMessage: (id: string) => void;
   markMessageAsRead: (id: string) => void;
+  addSkill: (skill: Omit<Skill, "id">) => void;
+  updateSkill: (skill: Skill) => void;
+  deleteSkill: (id: string) => void;
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => Promise<string>;
 };
 
@@ -111,7 +125,24 @@ const initialData: DataState = {
       image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&q=80&w=400"
     }
   ],
-  messages: []
+  messages: [],
+  skills: [
+    { id: "1", name: "Python", category: "Programming Languages" },
+    { id: "2", name: "Java", category: "Programming Languages" },
+    { id: "3", name: "HTML", category: "Web Development" },
+    { id: "4", name: "CSS", category: "Web Development" },
+    { id: "5", name: "JavaScript", category: "Web Development" },
+    { id: "6", name: "SQL", category: "Databases" },
+    { id: "7", name: "MongoDB", category: "Databases" },
+    { id: "8", name: "Git/GitHub", category: "Version Control" },
+    { id: "9", name: "React", category: "Web Development" },
+    { id: "10", name: "MERN Stack", category: "Web Development" },
+    { id: "11", name: "TypeScript", category: "Programming Languages" },
+    { id: "12", name: "Tailwind CSS", category: "Web Development" },
+    { id: "13", name: "Node.js", category: "Web Development" },
+    { id: "14", name: "Prompt Engineering", category: "Other" },
+    { id: "15", name: "API Integration", category: "Web Development" },
+  ]
 };
 
 // Create context
@@ -181,6 +212,26 @@ function dataReducer(state: DataState, action: DataAction): DataState {
         messages: state.messages.map(message => 
           message.id === action.payload ? { ...message, read: true } : message
         )
+      };
+
+    case "ADD_SKILL":
+      return {
+        ...state,
+        skills: [...state.skills, action.payload]
+      };
+      
+    case "UPDATE_SKILL":
+      return {
+        ...state,
+        skills: state.skills.map(skill => 
+          skill.id === action.payload.id ? action.payload : skill
+        )
+      };
+      
+    case "DELETE_SKILL":
+      return {
+        ...state,
+        skills: state.skills.filter(skill => skill.id !== action.payload)
       };
       
     default:
@@ -301,6 +352,29 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     dispatch({ type: "MARK_MESSAGE_READ", payload: id });
   }, []);
   
+  // Skill actions
+  const addSkill = useCallback((skill: Omit<Skill, "id">) => {
+    const id = Date.now().toString();
+    dispatch({ 
+      type: "ADD_SKILL", 
+      payload: { 
+        ...skill, 
+        id
+      } 
+    });
+  }, []);
+  
+  const updateSkill = useCallback((skill: Skill) => {
+    dispatch({ 
+      type: "UPDATE_SKILL", 
+      payload: skill
+    });
+  }, []);
+  
+  const deleteSkill = useCallback((id: string) => {
+    dispatch({ type: "DELETE_SKILL", payload: id });
+  }, []);
+  
   return (
     <DataContext.Provider value={{
       ...state,
@@ -313,6 +387,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       addMessage,
       deleteMessage,
       markMessageAsRead,
+      addSkill,
+      updateSkill,
+      deleteSkill,
       handleImageChange
     }}>
       {children}

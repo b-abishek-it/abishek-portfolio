@@ -1,11 +1,22 @@
-
 import { useState, useEffect } from 'react';
 
 type Theme = 'light' | 'dark';
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem('theme') as Theme) || 'light'
+    () => {
+      // Try to load from localStorage first
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      if (savedTheme) return savedTheme;
+      
+      // Otherwise check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      
+      // Default to light
+      return 'light';
+    }
   );
 
   useEffect(() => {
@@ -17,5 +28,9 @@ export function useTheme() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  return { theme, setTheme };
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  return { theme, setTheme, toggleTheme };
 }

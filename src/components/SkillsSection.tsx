@@ -1,8 +1,21 @@
 
 import React from "react";
+import { useData } from "@/contexts/DataContext";
 
 const SkillsSection: React.FC = () => {
-  const skills = [
+  const { skills } = useData();
+  
+  // Group skills by category
+  const skillsByCategory = skills.reduce((acc: Record<string, string[]>, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill.name);
+    return acc;
+  }, {});
+  
+  // Get standalone skills (used for skill badges)
+  const displaySkills = [
     "React", 
     "MERN Stack", 
     "TypeScript", 
@@ -13,20 +26,13 @@ const SkillsSection: React.FC = () => {
     "API Integration"
   ];
   
-  const categories = {
-    "Programming Languages": ["Python", "Java"],
-    "Web Development": ["HTML", "CSS", "JavaScript"],
-    "Databases": ["SQL", "MongoDB"],
-    "Version Control": ["Git/GitHub"]
-  };
-  
   return (
     <section id="skills" className="py-20">
       <div className="container mx-auto px-6">
         <h2 className="section-title text-center mx-auto mb-12">My Skills</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {Object.entries(categories).map(([category, categorySkills]) => (
+          {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
             <div 
               key={category} 
               className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
@@ -45,7 +51,7 @@ const SkillsSection: React.FC = () => {
         </div>
         
         <div className="flex flex-wrap justify-center gap-3">
-          {skills.map((skill) => (
+          {displaySkills.map((skill) => (
             <span 
               key={skill} 
               className="skill-badge"
