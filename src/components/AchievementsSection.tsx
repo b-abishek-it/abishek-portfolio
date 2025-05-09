@@ -4,7 +4,6 @@ import { useData } from "@/contexts/DataContext";
 import { 
   Dialog, 
   DialogContent, 
-  DialogDescription, 
   DialogHeader, 
   DialogTitle 
 } from "@/components/ui/dialog";
@@ -57,13 +56,15 @@ const AchievementsSection: React.FC = () => {
                   <div className="aspect-w-16 aspect-h-9 relative cursor-pointer">
                     <img 
                       src={achievement.image} 
-                      alt={`Achievement ${index + 1}`} 
+                      alt={achievement.title} 
                       className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                     />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                      <span className="text-white text-lg font-medium">Click to view</span>
+                    <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <span className="text-white text-xl font-medium mb-2">{achievement.title}</span>
+                      <span className="text-white text-sm">Click to view</span>
                     </div>
                   </div>
+                  <h3 className="text-center mt-3 font-medium text-lg">{achievement.title}</h3>
                 </div>
               ))}
             </div>
@@ -96,15 +97,12 @@ const AchievementsSection: React.FC = () => {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent className="max-w-4xl">
             <DialogHeader>
-              <DialogTitle>Achievement {selectedIndex + 1}</DialogTitle>
-              <DialogDescription>
-                View your achievement in detail
-              </DialogDescription>
+              <DialogTitle>{achievements[selectedIndex]?.title}</DialogTitle>
             </DialogHeader>
             <div className="mt-4">
               <img 
                 src={achievements[selectedIndex]?.image} 
-                alt={`Achievement ${selectedIndex + 1}`} 
+                alt={achievements[selectedIndex]?.title} 
                 className="w-full rounded-lg"
               />
             </div>

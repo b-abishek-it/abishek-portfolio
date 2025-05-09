@@ -15,18 +15,6 @@ const SkillsSection: React.FC = () => {
     return acc;
   }, {});
   
-  // Get standalone skills (used for skill badges)
-  const displaySkills = [
-    "React", 
-    "MERN Stack", 
-    "TypeScript", 
-    "Responsive Design",
-    "Tailwind CSS", 
-    "Node.js", 
-    "Prompt Engineering", 
-    "API Integration"
-  ];
-  
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
@@ -52,15 +40,15 @@ const SkillsSection: React.FC = () => {
           ))}
         </div>
         
-        {/* Skill badges */}
+        {/* Skill badges - Removed the predefined display skills */}
         <div className="flex flex-wrap justify-center gap-4">
-          {displaySkills.map((skill) => (
+          {skills.slice(0, 8).map((skill) => (
             <Badge 
-              key={skill} 
+              key={skill.id} 
               variant="outline"
               className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-portfolio-primary/20 to-portfolio-accent/20 border border-portfolio-primary/30 hover:bg-portfolio-primary/30 transition-colors duration-300"
             >
-              {skill}
+              {skill.name}
             </Badge>
           ))}
         </div>

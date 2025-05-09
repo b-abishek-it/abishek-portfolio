@@ -19,7 +19,7 @@ const AboutSection: React.FC = () => {
           <div className="md:w-1/2 animate-fade-in">
             <div className="overflow-hidden w-48 h-64 mx-auto shadow-md">
               <img 
-                src="/public/pic.png" 
+                src="/lovable-uploads/4b0d0b38-5c30-4477-b06e-4e17f466b078.png" 
                 alt="Abishek coding"
                 className="w-full h-full object-cover"
               />
