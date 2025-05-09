@@ -32,7 +32,7 @@ const Login: React.FC = () => {
       <div className="w-full max-w-md">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Login to Dashboard</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Login</h1>
           </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
