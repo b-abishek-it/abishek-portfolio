@@ -33,9 +33,6 @@ const Login: React.FC = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Login to Dashboard</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
-              Enter your credentials to access the admin dashboard
-            </p>
           </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -65,7 +62,6 @@ const Login: React.FC = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
                 required
               />
             </div>
