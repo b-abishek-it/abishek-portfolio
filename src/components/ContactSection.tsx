@@ -51,7 +51,7 @@ const ContactSection: React.FC = () => {
             
             <div className="space-y-6">
               <a 
-                href="mailto:abishek@example.com" 
+                href="mailto:itabishek7@gmail.com" 
                 className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-portfolio-primary transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-portfolio-primary/10 flex items-center justify-center text-portfolio-primary">
@@ -59,12 +59,12 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-sm">abishek@example.com</p>
+                  <p className="text-sm">itabishek7@gmail.com</p>
                 </div>
               </a>
               
               <a 
-                href="https://github.com/abishek-b" 
+                href="https://github.com/b-abishek-it" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-portfolio-primary transition-colors"
@@ -74,12 +74,12 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">GitHub</h4>
-                  <p className="text-sm">github.com/abishek-b</p>
+                  <p className="text-sm">b-abishek-it</p>
                 </div>
               </a>
               
               <a 
-                href="https://linkedin.com/in/abishek-b" 
+                href="https://www.linkedin.com/in/abishek-b-89ab77313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-portfolio-primary transition-colors"
@@ -89,7 +89,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">LinkedIn</h4>
-                  <p className="text-sm">linkedin.com/in/abishek-b</p>
+                  <p className="text-sm">b-Abishek</p>
                 </div>
               </a>
             </div>
