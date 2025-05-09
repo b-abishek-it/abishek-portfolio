@@ -97,7 +97,7 @@ const initialData: DataState = {
     {
       id: "3",
       title: "Passport Automation System",
-      description: "A React-based web application for applying, tracking, and managing passport services. It streamlines the process for users, police, and officers.",
+      description: "A React-based web application for applying, tracking, and managing passport services.",
       image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&q=80&w=400",
       codeLink: "https://github.com/username/passport-system",
       demoLink: "https://passport-system-demo.netlify.app"
