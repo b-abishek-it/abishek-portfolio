@@ -1,5 +1,6 @@
 
 import React from "react";
+import { GraduationCap } from "lucide-react";
 
 type Education = {
   id: number;
@@ -35,25 +36,22 @@ const EducationSection: React.FC = () => {
   ];
   
   return (
-    <section id="education" className="py-20">
+    <section id="education" className="py-20 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-6">
         <h2 className="section-title text-center mx-auto mb-12">Education</h2>
         
         <div className="max-w-3xl mx-auto">
-          <div className="space-y-8">
-            {educationList.map((edu, index) => (
-              <div 
-                key={edu.id}
-                className="relative animate-slide-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Timeline node */}
-                <div className="absolute left-0 top-0 w-8 h-8 bg-portfolio-primary rounded-full flex items-center justify-center">
-                  <span className="text-white font-medium text-sm">{edu.id}</span>
+          {educationList.map((edu, index) => (
+            <div 
+              key={edu.id}
+              className="mb-8 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md p-6 transition-all hover:shadow-lg animate-fade-in"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="mt-1 p-2 bg-portfolio-primary/10 rounded-full">
+                  <GraduationCap size={24} className="text-portfolio-primary" />
                 </div>
-                
-                {/* Content */}
-                <div className="ml-12 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <div>
                   <h3 className="text-xl font-bold text-portfolio-dark dark:text-white mb-2">
                     {edu.degree}
                   </h3>
@@ -68,8 +66,8 @@ const EducationSection: React.FC = () => {
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

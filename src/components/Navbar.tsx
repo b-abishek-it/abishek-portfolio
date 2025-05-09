@@ -15,9 +15,8 @@ const Navbar: React.FC = () => {
   // Check if we're on the main page
   const isMainPage = location.pathname === "/";
   
-  // Links to show in the navbar
+  // Links to show in the navbar (removed "Home")
   const navLinks = [
-    { name: "Home", path: "#home" },
     { name: "About", path: "#about" },
     { name: "Education", path: "#education" },
     { name: "Skills", path: "#skills" },

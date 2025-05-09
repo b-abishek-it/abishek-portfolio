@@ -13,22 +13,11 @@ const AboutSection: React.FC = () => {
   return (
     <section id="about" className="min-h-screen py-20 pt-28 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="block">Hi, I'm</span>
-            <span className="text-portfolio-primary">Abishek B</span>
-          </h1>
-          
-          <h2 className="text-xl md:text-2xl font-medium mb-6 text-gray-700 dark:text-gray-300">
-            Full Stack Developer | Prompt Engineer
-          </h2>
-        </div>
-        
         <h2 className="section-title text-center mx-auto mb-12">About Me</h2>
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="md:w-1/2 animate-fade-in">
-            <div className="overflow-hidden w-48 h-64 mx-auto shadow-md">
+            <div className="overflow-hidden w-64 h-64 mx-auto shadow-md rounded-lg">
               <img 
                 src="/lovable-uploads/4b0d0b38-5c30-4477-b06e-4e17f466b078.png" 
                 alt="Abishek coding"
@@ -38,6 +27,17 @@ const AboutSection: React.FC = () => {
           </div>
           
           <div className="md:w-1/2 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <div className="mb-8">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="block">Hi, I'm</span>
+                <span className="text-portfolio-primary">Abishek B</span>
+              </h1>
+              
+              <h2 className="text-xl md:text-xl font-medium mb-6 text-gray-700 dark:text-gray-300">
+                Full Stack Developer | Prompt Engineer
+              </h2>
+            </div>
+
             <h3 className="text-2xl font-semibold mb-4">Who Am I?</h3>
             
             <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg leading-relaxed">
