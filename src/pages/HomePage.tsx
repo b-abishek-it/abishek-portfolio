@@ -1,7 +1,6 @@
 
 import React from "react";
 import Navbar from "@/components/Navbar";
-import HomeSection from "@/components/HomeSection";
 import AboutSection from "@/components/AboutSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -14,7 +13,6 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <HomeSection />
       <AboutSection />
       <EducationSection />
       <SkillsSection />

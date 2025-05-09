@@ -11,8 +11,19 @@ const AboutSection: React.FC = () => {
   };
   
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="about" className="min-h-screen py-20 pt-28 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-6">
+        <div className="text-center mb-12 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <span className="block">Hi, I'm</span>
+            <span className="text-portfolio-primary">Abishek B</span>
+          </h1>
+          
+          <h2 className="text-xl md:text-2xl font-medium mb-6 text-gray-700 dark:text-gray-300">
+            Full Stack Developer | Prompt Engineer
+          </h2>
+        </div>
+        
         <h2 className="section-title text-center mx-auto mb-12">About Me</h2>
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
