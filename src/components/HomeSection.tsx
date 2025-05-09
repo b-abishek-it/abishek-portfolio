@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 
 const HomeSection: React.FC = () => {
   return (
@@ -23,8 +22,8 @@ const HomeSection: React.FC = () => {
           
           <div className="flex justify-center space-x-4">
             <a href="#about">
-              <Button className="flex items-center gap-2">
-                Explore My Work <ArrowDown size={16} />
+              <Button>
+                Explore My Work
               </Button>
             </a>
             <a href="#contact">
@@ -34,11 +33,7 @@ const HomeSection: React.FC = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-md">
-          <ArrowDown size={20} className="text-portfolio-primary" />
-        </a>
-      </div>
+      {/* Removed the bouncing arrow at the bottom */}
     </section>
   );
 };
