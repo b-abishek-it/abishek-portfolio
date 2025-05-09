@@ -6,7 +6,7 @@ import { FileText } from "lucide-react";
 const AboutSection: React.FC = () => {
   const openResume = () => {
     // Replace this URL with the actual URL to your resume PDF
-    const src = "/public/ResumeCv.pdf";
+    const resumeUrl = "/public/ResumeCv.pdf";
     window.open(resumeUrl, "_blank");
   };
   
