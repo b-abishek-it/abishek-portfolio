@@ -12,16 +12,6 @@ const Footer: React.FC = () => {
           <p className="text-gray-600 dark:text-gray-300 mb-4 md:mb-0">
             © {year} Abishek B. All rights reserved.
           </p>
-          
-          <div className="flex items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-300">
-              Made with 
-            </span>
-            <Heart size={16} className="text-red-500 mx-1" />
-            <span className="text-sm text-gray-600 dark:text-gray-300">
-              using React & Tailwind CSS
-            </span>
-          </div>
         </div>
       </div>
     </footer>
