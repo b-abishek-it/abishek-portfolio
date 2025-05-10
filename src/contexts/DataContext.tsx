@@ -98,7 +98,7 @@ const initialData: DataState = {
       id: "3",
       title: "Passport Automation System",
       description: "A React-based web application for applying, tracking, and managing passport services.",
-      image: "https://ibb.co/bMxDtm8d",
+      image: "https://media-hosting.imagekit.io/1fd3063a7e1e4650/Passport-img.JPG?Expires=1841500748&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=lWInXfEtmT3wyYi8DAdoiz~JueR1FF~jEYKYD0Q21O5k~B2oZXNg7g5wKXryIWu3PKoUZHJQQ3HoXUYe6KPD1VXyGol6~P1WebOd2~P3~ByDbD6JL~PeJ1hcweLpls~ZK~6JJjJta3ny7I-D-sVXvP0l-RIIMYCT3NG9bJ7Jp4qswiQ7btzX9lrit0JdLsfMHoMP4aX4~2hFwGKYTo2RNFanwbDhrbMuIKKwqX7QyEByxe1nt4NCGA~sR9MIhzKwfQ852Sb-cd01o81aRX6sQt8UWydSywrainAd8QD9cOnvI~maYgN7G~dvYOS-gaAZLVoAiEjbKG~rpE287wBrrw__",
       codeLink: "https://github.com/b-abishek-it/passport-pathway-system",
       demoLink: "https://passport-automation-system-eta.vercel.app/"
     }
@@ -107,22 +107,22 @@ const initialData: DataState = {
     {
       id: "1",
       title: "Introduction to Microsoft Excel",
-      image: "https://ibb.co/wZQcf4Z0"
+      image: "https://media-hosting.imagekit.io/4af7a15fd9c64842/C1.jpg?Expires=1841500925&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=fvbi-Qw6GtPoLNg1lbxRfTNqCBIO57ukc2S130IaxxrXYR6MY3lj94e9n9fp3f5X6km4J4-OZYhsVDr~6GNDesC1y4QF4fQGbkQTItXIuYvFY7KtjlmKiaNVr7S~X-KyOay1YrSr2pjrOiidAtn7SI0jaXrYbyfWft8MheVyMxhNj13jnyciAVkm8I8w0148paBH~mVG2FVOKDD-VgTRJJ4MDHrIqHe1MpklbO5C~fgIqdyyHCHeUIr1pNKuqTs3oLK9D6POyslBl-5e-L72F8bHWCXI7fqK1te0oVicLgfw4n9XOsa4fQw~~fNB-trwy4kTJQuHisMnHCE8-un2vQ__"
     },
     {
       id: "2",
       title: "TCS iON Career Edge - Young Professional",
-      image: "https://ibb.co/nsR9bTWp"
+      image: ""
     },
     {
       id: "3",
       title: "Workshop",
-      image: "https://ibb.co/4HgVMjc"
+      image: "https://media-hosting.imagekit.io/f859c9b3695845d9/C3.jpg?Expires=1841500925&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=kBWXr~Seb9bhJ9qKzfhScgFsguhefrETws3aLRwf0VtfmG2~q-uCbtCA0V0osmt2YfWCBPhSkeR81lPDryNPl~Tfbdr2FdYsbCaiLHkhVufE9IJYt8L~1ZXlRWIK0uUPMczcrOQH8zo5GHhPv67cnNuYpdbwSxTNE92P8suFp0T8q5vR7wQwvfwfZnyrLWt7CpPh1uyQKXaqwYz2a7YWZm6xpdoGs2uZXlA7b5tXE2FU02j05n5OmOZTuJaOb8nnge5uExk4qmdzYf6s~x-7FI8VpDVFRZGkMlDu~NhqAZq7~m9kBwkm4FSkHu6USLQzjmRobTupWjcnUcf4V0aYlA__"
     },
     {
       id: "4",
       title: "Internship",
-      image: "https://ibb.co/vC7jCvQd"
+      image: "https://media-hosting.imagekit.io/6f8006e0b2214da4/C4.jpg?Expires=1841500925&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TpO4o5uxAxtFIACn-fMihZN52Z5S60mSzu-Vdd8XWOhZvBxBvNzSXs6aPM3LofrEKzYuxKNyY8rRg4AvqUK-LRGxF13T2CthLb0w58OVxffb15wubFbdp3sntjcLGb2DiWDSJ3tntUScUzip6LY6PVIFnj1irt0A0n3wkb3PIAJ294npxFP1r4PGmH9RubDcUzI8S-Tld8AfizQBHcsAUz6csYKMglRvSwh30PbarJRAXLWPFfBLhy5oNztz2cvipSAzw8V1w8LG0yDXHItaqHK7LwwKigpYED2QksPuS9yjlDQ7kcbiJx6qnt8G9Ywlgm3JmaYoTkpc4SGd0jfHxA__"
     }
   ],
   messages: [],
