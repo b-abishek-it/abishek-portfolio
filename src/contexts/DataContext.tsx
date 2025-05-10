@@ -83,24 +83,24 @@ const initialData: DataState = {
       title: "Weather App",
       description: "A React-based app that fetches real-time weather data via API and displays it with a clean, responsive UI.",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=400",
-      codeLink: "https://github.com/username/weather-app",
-      demoLink: "https://weather-app-demo.netlify.app"
+      codeLink: "https://github.com/b-abishek-it/weather-app",
+      demoLink: "https://weather-app-teal-omega-82.vercel.app/"
     },
     {
       id: "2",
       title: "Todo List App",
       description: "A simple React-based app to manage daily tasks. Users can add, complete, and delete todos easily.",
       image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=400",
-      codeLink: "https://github.com/username/todo-app",
-      demoLink: "https://todo-app-demo.netlify.app"
+      codeLink: "https://github.com/b-abishek-it/To-Do-List",
+      demoLink: "https://to-do-list-orcin-eight-84.vercel.app/"
     },
     {
       id: "3",
       title: "Passport Automation System",
       description: "A React-based web application for applying, tracking, and managing passport services.",
       image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&q=80&w=400",
-      codeLink: "https://github.com/username/passport-system",
-      demoLink: "https://passport-system-demo.netlify.app"
+      codeLink: "https://github.com/b-abishek-it/passport-pathway-system",
+      demoLink: "https://passport-automation-system-eta.vercel.app/"
     }
   ],
   achievements: [
