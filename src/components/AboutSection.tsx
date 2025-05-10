@@ -17,11 +17,11 @@ const AboutSection: React.FC = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="md:w-1/2 animate-fade-in">
-            <div className="overflow-hidden w-full h-64 mx-auto shadow-md rounded-lg">
+            <div className="overflow-hidden w-2/3 h-96 mx-auto shadow-md rounded-lg">
               <img 
                 src="/lovable-uploads/4b0d0b38-5c30-4477-b06e-4e17f466b078.png" 
                 alt="Abishek coding"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           </div>
