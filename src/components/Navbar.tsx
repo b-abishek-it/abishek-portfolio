@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -56,9 +56,9 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="/" className="text-xl font-bold text-portfolio-dark dark:text-white">
+          <Link to="/" className="text-xl font-bold text-portfolio-dark dark:text-white">
             Abishek<span className="text-portfolio-primary"></span>
-          </a>
+          </Link>
           
           <div className="flex items-center space-x-4">
             <ThemeSwitch />
@@ -88,16 +88,16 @@ const Navbar: React.FC = () => {
                     {link.name}
                   </a>
                 ))}
-                <a href="/login">
+                <Link to="/login">
                   <Button variant="outline" size="sm">Login</Button>
-                </a>
+                </Link>
               </div>
             )}
             
             {!isMobile && !isMainPage && (
-              <a href="/">
+              <Link to="/">
                 <Button variant="outline" size="sm">Back to Portfolio</Button>
-              </a>
+              </Link>
             )}
           </div>
         </div>
@@ -116,13 +116,13 @@ const Navbar: React.FC = () => {
                   {link.name}
                 </a>
               ))}
-              <a 
-                href="/login"
+              <Link 
+                to="/login"
                 className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
                 onClick={handleLinkClick}
               >
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         )}
