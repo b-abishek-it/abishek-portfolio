@@ -82,7 +82,7 @@ const initialData: DataState = {
       id: "1",
       title: "Weather App",
       description: "A React-based app that fetches real-time weather data via API and displays it with a clean, responsive UI.",
-      image: "https://ibb.co/M51kLZVy",
+      image: "https://media-hosting.imagekit.io/c22182fd0bac41de/Weather.JPG?Expires=1841500591&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=KS0MsnOAohUiRmqJC~zbgKs3T3AOoyiCt1uCbArfqMpQVq8vaUHIO6CecZsZy36ggTHw21R5FbdGfR18l48Hi~8fZUrg~q1NcIKtAwkbS5ZVHnbz1ivoN9ss9OVnVxPQ1vlUKNeduBDFztrFTg4CesUHAoTRMEDg0Di4hDiDyi3ZpRTLKrDd18PKPWKnyamLCRF0~9XabF3rlk7kxb25V18wE2q4li9w5nbItNcgvRINWWpkzB2NXIV~M1-pY2i8fbzDRr5SGs4a7bIRB8RFAfHSv6Bcv6OZCABdTYxcn-jh40k~r8hMb4M5rriFfJzysh0j1So4o1Sd6ZMfzJt6WQ__",
       codeLink: "https://github.com/b-abishek-it/weather-app",
       demoLink: "https://weather-app-teal-omega-82.vercel.app/"
     },
