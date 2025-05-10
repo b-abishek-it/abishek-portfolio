@@ -82,7 +82,7 @@ const initialData: DataState = {
       id: "1",
       title: "Weather App",
       description: "A React-based app that fetches real-time weather data via API and displays it with a clean, responsive UI.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=400",
+      image: "https://ibb.co/M51kLZVy",
       codeLink: "https://github.com/b-abishek-it/weather-app",
       demoLink: "https://weather-app-teal-omega-82.vercel.app/"
     },
@@ -90,7 +90,7 @@ const initialData: DataState = {
       id: "2",
       title: "Todo List App",
       description: "A simple React-based app to manage daily tasks. Users can add, complete, and delete todos easily.",
-      image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=400",
+      image: "https://ibb.co/YB1kJ3rj",
       codeLink: "https://github.com/b-abishek-it/To-Do-List",
       demoLink: "https://to-do-list-orcin-eight-84.vercel.app/"
     },
@@ -98,7 +98,7 @@ const initialData: DataState = {
       id: "3",
       title: "Passport Automation System",
       description: "A React-based web application for applying, tracking, and managing passport services.",
-      image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&q=80&w=400",
+      image: "https://ibb.co/bMxDtm8d",
       codeLink: "https://github.com/b-abishek-it/passport-pathway-system",
       demoLink: "https://passport-automation-system-eta.vercel.app/"
     }
@@ -106,23 +106,23 @@ const initialData: DataState = {
   achievements: [
     {
       id: "1",
-      title: "Hackathon Winner",
-      image: "https://images.unsplash.com/photo-1496469888073-80de7e952517?auto=format&fit=crop&q=80&w=400"
+      title: "Introduction to Microsoft Excel",
+      image: "https://ibb.co/wZQcf4Z0"
     },
     {
       id: "2",
-      title: "Best Project Award",
-      image: "https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?auto=format&fit=crop&q=80&w=400"
+      title: "TCS iON Career Edge - Young Professional",
+      image: "https://ibb.co/nsR9bTWp"
     },
     {
       id: "3",
-      title: "Coding Competition",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=400"
+      title: "Workshop",
+      image: "https://ibb.co/4HgVMjc"
     },
     {
       id: "4",
-      title: "Certificate of Excellence",
-      image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&q=80&w=400"
+      title: "Internship",
+      image: "https://ibb.co/vC7jCvQd"
     }
   ],
   messages: [],
@@ -135,13 +135,6 @@ const initialData: DataState = {
     { id: "6", name: "SQL", category: "Databases" },
     { id: "7", name: "MongoDB", category: "Databases" },
     { id: "8", name: "Git/GitHub", category: "Version Control" },
-    { id: "9", name: "React", category: "Web Development" },
-    { id: "10", name: "MERN Stack", category: "Web Development" },
-    { id: "11", name: "TypeScript", category: "Programming Languages" },
-    { id: "12", name: "Tailwind CSS", category: "Web Development" },
-    { id: "13", name: "Node.js", category: "Web Development" },
-    { id: "14", name: "Prompt Engineering", category: "Other" },
-    { id: "15", name: "API Integration", category: "Web Development" },
   ]
 };
 
