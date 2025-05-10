@@ -112,7 +112,7 @@ const initialData: DataState = {
     {
       id: "2",
       title: "TCS iON Career Edge - Young Professional",
-      image: ""
+      image: "https://media-hosting.imagekit.io/34631468a8274b45/C2.jpg?Expires=1841501136&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=qzyMc8HNCORXDbWWvdluoNlnIosmaapm7dFQRNwLdBcxb-ZSMM5qDc-hoTz6jqOQjp93~Ng32TahVSMHjg8C9O2j74AE-9unSVgIY2ppk5U6J24qh4HMPCQiAlrhWT6nzyZ~H8TbpXHlOR4CuDNWT-kGN-OfvG99DyZpTYBs-2VnO7BUVbXtXxWSn38x0l-t9DbUpbkEsjJSZ9oaIenyx69JHLmdGblxLgesE31w5xxau2F1Ew3yJYumXAiQoLCGIWHqeou4NItyag2iieE8lYWoU-ySdqXpnPYvooBurXsNfa1AJgVmTsEAXaNzKajvplZYQywULi9mrSolqEclPg__"
     },
     {
       id: "3",
