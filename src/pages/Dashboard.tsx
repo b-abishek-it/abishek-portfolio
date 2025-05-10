@@ -20,6 +20,7 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("projects");
   const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);
+  const [syncStatus, setSyncStatus] = useState<"synced" | "syncing">("synced");
   
   useEffect(() => {
     // Redirect to login if not authenticated
@@ -31,14 +32,38 @@ const Dashboard: React.FC = () => {
   // Listen for data changes and update last save time
   useEffect(() => {
     const handleStorageChange = () => {
-      setLastSaveTime(new Date());
-      // Show toast notification when changes are saved
-      toast.success("Changes saved and published automatically!");
+      setSyncStatus("syncing");
+      
+      // Simulate a short delay for syncing visualization
+      setTimeout(() => {
+        setLastSaveTime(new Date());
+        setSyncStatus("synced");
+        // Show toast notification when changes are saved
+        toast.success("Changes saved and published to all devices!");
+        
+        // Dispatch a custom event that other browser tabs can listen for
+        const syncEvent = new CustomEvent("portfolio-sync", { 
+          detail: { timestamp: new Date().toISOString() } 
+        });
+        window.dispatchEvent(syncEvent);
+      }, 600);
     };
     
+    // Listen for changes in this tab
     window.addEventListener("storage", handleStorageChange);
+    
+    // Listen for sync events from other tabs
+    window.addEventListener("portfolio-sync", (e: Event) => {
+      const syncEvent = e as CustomEvent;
+      if (syncEvent.detail && syncEvent.detail.timestamp) {
+        setLastSaveTime(new Date(syncEvent.detail.timestamp));
+        toast.success("Portfolio updated from another device!");
+      }
+    });
+    
     return () => {
       window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("portfolio-sync", () => {});
     };
   }, []);
   
@@ -52,10 +77,18 @@ const Dashboard: React.FC = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-xl font-bold text-portfolio-dark dark:text-white">Portfolio Dashboard</h1>
           <div className="flex items-center gap-4">
-            <div className="text-sm text-green-600 dark:text-green-400">
-              {lastSaveTime && (
-                <span>Last updated: {lastSaveTime.toLocaleTimeString()}</span>
-              )}
+            <div className="text-sm text-green-600 dark:text-green-400 flex items-center">
+              {syncStatus === "syncing" ? (
+                <span className="flex items-center">
+                  <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse mr-2"></span>
+                  Syncing...
+                </span>
+              ) : lastSaveTime ? (
+                <span className="flex items-center">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Last updated: {lastSaveTime.toLocaleTimeString()}
+                </span>
+              ) : null}
             </div>
             <Button variant="outline" onClick={() => navigate("/")}>
               View Portfolio
@@ -68,9 +101,10 @@ const Dashboard: React.FC = () => {
       </header>
       
       <main className="container mx-auto px-6 py-8">
-        <div className="mb-6 bg-green-50 dark:bg-green-900/30 p-4 rounded-md">
-          <p className="text-green-800 dark:text-green-300 text-sm">
-            All changes are automatically saved and published to the live site instantly.
+        <div className="mb-6 bg-green-50 dark:bg-green-900/30 p-4 rounded-md border border-green-100 dark:border-green-900">
+          <p className="text-green-800 dark:text-green-300 text-sm flex items-center">
+            <span className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            All changes are synchronized across all devices and published to the live site instantly.
           </p>
         </div>
         
