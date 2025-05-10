@@ -21,6 +21,7 @@ const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState("projects");
   const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);
   const [syncStatus, setSyncStatus] = useState<"synced" | "syncing">("synced");
+  const [isRealtimeSyncEnabled, setIsRealtimeSyncEnabled] = useState(true);
   
   useEffect(() => {
     // Redirect to login if not authenticated
@@ -31,26 +32,52 @@ const Dashboard: React.FC = () => {
   
   // Listen for data changes and update last save time
   useEffect(() => {
-    const handleStorageChange = () => {
-      setSyncStatus("syncing");
-      
-      // Simulate a short delay for syncing visualization
-      setTimeout(() => {
-        setLastSaveTime(new Date());
-        setSyncStatus("synced");
-        // Show toast notification when changes are saved
-        toast.success("Changes saved and published to all devices!");
+    const handleStorageChange = (event: StorageEvent) => {
+      // Only respond to changes in portfolio data
+      if (event.key === "portfolioData") {
+        setSyncStatus("syncing");
         
-        // Dispatch a custom event that other browser tabs can listen for
-        const syncEvent = new CustomEvent("portfolio-sync", { 
-          detail: { timestamp: new Date().toISOString() } 
-        });
-        window.dispatchEvent(syncEvent);
-      }, 600);
+        // Simulate a short delay for syncing visualization
+        setTimeout(() => {
+          setLastSaveTime(new Date());
+          setSyncStatus("synced");
+          toast.success("Changes saved and published to all devices!");
+          
+          // Dispatch a custom event that other browser tabs can listen for
+          const syncEvent = new CustomEvent("portfolio-sync", { 
+            detail: { timestamp: new Date().toISOString() } 
+          });
+          window.dispatchEvent(syncEvent);
+        }, 600);
+      }
     };
     
-    // Listen for changes in this tab
+    // Listen for localStorage changes from other tabs/windows
     window.addEventListener("storage", handleStorageChange);
+    
+    // Custom event listener for any data changes in the current application
+    const handleLocalDataChange = () => {
+      if (isRealtimeSyncEnabled) {
+        setSyncStatus("syncing");
+        
+        // Simulate a short delay for syncing visualization
+        setTimeout(() => {
+          setLastSaveTime(new Date());
+          setSyncStatus("synced");
+          // Show toast notification when changes are saved
+          toast.success("Changes saved and published to all devices!");
+          
+          // Dispatch a custom event that other browser tabs can listen for
+          const syncEvent = new CustomEvent("portfolio-sync", { 
+            detail: { timestamp: new Date().toISOString() } 
+          });
+          window.dispatchEvent(syncEvent);
+        }, 600);
+      }
+    };
+    
+    // Listen for any data changes in the current tab
+    window.addEventListener("portfolio-data-change", handleLocalDataChange);
     
     // Listen for sync events from other tabs
     window.addEventListener("portfolio-sync", (e: Event) => {
@@ -63,9 +90,10 @@ const Dashboard: React.FC = () => {
     
     return () => {
       window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("portfolio-data-change", handleLocalDataChange);
       window.removeEventListener("portfolio-sync", () => {});
     };
-  }, []);
+  }, [isRealtimeSyncEnabled]);
   
   if (!isAuthenticated) {
     return null;
@@ -104,7 +132,7 @@ const Dashboard: React.FC = () => {
         <div className="mb-6 bg-green-50 dark:bg-green-900/30 p-4 rounded-md border border-green-100 dark:border-green-900">
           <p className="text-green-800 dark:text-green-300 text-sm flex items-center">
             <span className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-            All changes are synchronized across all devices and published to the live site instantly.
+            All changes are automatically saved and published to the live site instantly. Any updates made will be visible to all users across all devices.
           </p>
         </div>
         

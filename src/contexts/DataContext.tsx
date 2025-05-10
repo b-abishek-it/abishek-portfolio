@@ -150,93 +150,116 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 
 // Reducer function
 function dataReducer(state: DataState, action: DataAction): DataState {
+  let newState: DataState;
+  
   switch (action.type) {
     case "SET_DATA":
-      return { ...state, ...action.payload };
+      newState = { ...state, ...action.payload };
+      break;
       
     case "ADD_PROJECT":
-      return {
+      newState = {
         ...state,
         projects: [...state.projects, action.payload]
       };
+      break;
       
     case "UPDATE_PROJECT":
-      return {
+      newState = {
         ...state,
         projects: state.projects.map(project => 
           project.id === action.payload.id ? action.payload : project
         )
       };
+      break;
       
     case "DELETE_PROJECT":
-      return {
+      newState = {
         ...state,
         projects: state.projects.filter(project => project.id !== action.payload)
       };
+      break;
       
     case "ADD_ACHIEVEMENT":
-      return {
+      newState = {
         ...state,
         achievements: [...state.achievements, action.payload]
       };
+      break;
       
     case "UPDATE_ACHIEVEMENT":
-      return {
+      newState = {
         ...state,
         achievements: state.achievements.map(achievement => 
           achievement.id === action.payload.id ? action.payload : achievement
         )
       };
+      break;
       
     case "DELETE_ACHIEVEMENT":
-      return {
+      newState = {
         ...state,
         achievements: state.achievements.filter(achievement => achievement.id !== action.payload)
       };
+      break;
       
     case "ADD_MESSAGE":
-      return {
+      newState = {
         ...state,
         messages: [...state.messages, action.payload]
       };
+      break;
       
     case "DELETE_MESSAGE":
-      return {
+      newState = {
         ...state,
         messages: state.messages.filter(message => message.id !== action.payload)
       };
+      break;
       
     case "MARK_MESSAGE_READ":
-      return {
+      newState = {
         ...state,
         messages: state.messages.map(message => 
           message.id === action.payload ? { ...message, read: true } : message
         )
       };
+      break;
 
     case "ADD_SKILL":
-      return {
+      newState = {
         ...state,
         skills: [...state.skills, action.payload]
       };
+      break;
       
     case "UPDATE_SKILL":
-      return {
+      newState = {
         ...state,
         skills: state.skills.map(skill => 
           skill.id === action.payload.id ? action.payload : skill
         )
       };
+      break;
       
     case "DELETE_SKILL":
-      return {
+      newState = {
         ...state,
         skills: state.skills.filter(skill => skill.id !== action.payload)
       };
+      break;
       
     default:
       return state;
   }
+  
+  // Dispatch a custom event when data changes
+  setTimeout(() => {
+    const portfolioDataChangeEvent = new Event("portfolio-data-change");
+    window.dispatchEvent(portfolioDataChangeEvent);
+  }, 0);
+  
+  return newState;
 }
 
 // Provider component
@@ -260,6 +283,16 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => {
     try {
       localStorage.setItem("portfolioData", JSON.stringify(state));
+      
+      // This will broadcast the change to other open tabs
+      if (typeof window !== 'undefined') {
+        // Use a small delay to ensure the storage event fires correctly
+        setTimeout(() => {
+          // Create a minimal event that will trigger the storage event in other tabs
+          localStorage.setItem("__portfolioDataTimestamp", new Date().toISOString());
+          localStorage.removeItem("__portfolioDataTimestamp");
+        }, 100);
+      }
     } catch (error) {
       console.error("Failed to save data to localStorage:", error);
     }
