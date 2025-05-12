@@ -37,23 +37,23 @@ const SkillCategory = ({ title, skills }: { title: string; skills: SkillProps[] 
 
 const Skills = () => {
   const programmingLanguages = [
-    { name: 'Python', level: 85 },
-    { name: 'Java', level: 75 }
+    { name: 'Python', level: 60 },
+    { name: 'Java', level: 40 }
   ];
   
   const webDevelopment = [
-    { name: 'HTML', level: 90 },
-    { name: 'CSS', level: 85 },
-    { name: 'JavaScript', level: 80 }
+    { name: 'HTML', level: 70 },
+    { name: 'CSS', level: 50 },
+    { name: 'JavaScript', level: 50 }
   ];
   
   const databases = [
-    { name: 'SQL', level: 75 },
-    { name: 'MongoDB', level: 70 }
+    { name: 'SQL', level: 50 },
+    { name: 'MongoDB', level: 40 }
   ];
   
   const versionControl = [
-    { name: 'Git/GitHub', level: 80 }
+    { name: 'Git/GitHub', level: 50 }
   ];
 
   return (
