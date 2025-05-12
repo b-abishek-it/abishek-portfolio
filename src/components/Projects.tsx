@@ -50,23 +50,23 @@ const Projects = () => {
     {
       title: "Weather App",
       description: "A React-based app that fetches real-time weather data via API and displays it with a clean, responsive UI.",
-      image: "/weather-app.jpg",
-      codeLink: "#",
-      demoLink: "#"
+      image: "/public/weather.JPG",
+      codeLink: "https://github.com/b-abishek-it/weather-app",
+      demoLink: "https://weather-app-teal-omega-82.vercel.app/"
     },
     {
       title: "Todo List App",
       description: "A simple React-based app to manage daily tasks. Users can add, complete, and delete todos easily.",
-      image: "/todo-app.jpg",
-      codeLink: "#",
-      demoLink: "#"
+      image: "/public/todo.JPG",
+      codeLink: "https://github.com/b-abishek-it/To-Do-List",
+      demoLink: "https://to-do-list-orcin-eight-84.vercel.app/"
     },
     {
       title: "Passport Automation System",
       description: "A React-based web application for applying, tracking, and managing passport services. It streamlines the process for users, police, and officers.",
-      image: "/passport-app.jpg",
-      codeLink: "#",
-      demoLink: "#"
+      image: "/public/passport.JPG",
+      codeLink: "https://github.com/b-abishek-it/passport-pathway-system",
+      demoLink: "https://passport-automation-system-eta.vercel.app/"
     }
   ];
 
