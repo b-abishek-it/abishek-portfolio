@@ -69,7 +69,7 @@ const About = () => {
           </DialogHeader>
           <div className="h-full">
             <iframe 
-              src="/resume.pdf" 
+              src="/public/resume.pdf" 
               className="w-full h-full border-0"
               title="Resume"
             ></iframe>
