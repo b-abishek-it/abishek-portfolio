@@ -36,19 +36,19 @@ const Contact = () => {
           <ContactItem 
             icon={<Mail size={24} />}
             label="Email" 
-            link="mailto:your-email@example.com"
+            link="mailto:itabishek7@gmail.com"
           />
           
           <ContactItem 
             icon={<Github size={24} />}
             label="GitHub" 
-            link="https://github.com/yourusername" 
+            link="https://github.com/b-abishek-it" 
           />
           
           <ContactItem 
             icon={<Linkedin size={24} />}
             label="LinkedIn" 
-            link="https://linkedin.com/in/yourusername" 
+            link="https://www.linkedin.com/in/abishek-b-89ab77313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
           />
         </div>
         
