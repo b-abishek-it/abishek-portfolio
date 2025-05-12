@@ -29,7 +29,7 @@ const About = () => {
             >
               {/* Passport size photo */}
               <img 
-                src="/public/pic.png" 
+                src="public/pic.png" 
                 alt="Abishek B" 
                 className="w-full h-full object-cover"
               />
