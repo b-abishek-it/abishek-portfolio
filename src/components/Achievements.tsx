@@ -42,12 +42,11 @@ const Achievements = () => {
         
         <div className="relative max-w-3xl mx-auto aspect-[4/3] bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
              onClick={() => openAchievementDialog(currentImage)}>
-          {/* Placeholder for achievement images */}
-          <div className="absolute inset-0 flex items-center justify-center bg-accent/10 text-accent">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 20v-6M9 20v-9M6 20V4M3 20v-4M18 20v-6M15 20v-3M21 20V2"/>
-            </svg>
-          </div>
+          <img 
+            src={achievements[currentImage].image} 
+            alt={achievements[currentImage].title}
+            className="w-full h-full object-cover"
+          />
           
           <div className="absolute bottom-0 left-0 right-0 py-4 px-6 bg-gradient-to-t from-black/70 to-transparent">
             <p className="text-white font-medium text-lg">Achievement {currentImage + 1} of {achievements.length}</p>
@@ -104,11 +103,14 @@ const Achievements = () => {
               </DialogTitle>
             </DialogHeader>
             <div className="flex justify-center p-4">
-              <div className="w-full aspect-[4/3] bg-accent/10 flex items-center justify-center rounded-md">
-                {/* Replace with actual image when available */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20v-6M9 20v-9M6 20V4M3 20v-4M18 20v-6M15 20v-3M21 20V2"/>
-                </svg>
+              <div className="w-full aspect-[4/3] rounded-md overflow-hidden">
+                {selectedAchievement !== null && (
+                  <img 
+                    src={achievements[selectedAchievement].image} 
+                    alt={achievements[selectedAchievement].title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
             </div>
           </DialogContent>

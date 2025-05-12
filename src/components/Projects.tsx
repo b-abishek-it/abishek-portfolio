@@ -18,13 +18,12 @@ const ProjectCard = ({ project, index }: { project: ProjectProps; index: number 
         index % 2 === 0 ? "animate-fade-in" : "animate-slide-in"
       )}
     >
-      <div className="aspect-video w-full bg-accent/10 flex items-center justify-center">
-        {/* Replace with actual project image when available */}
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" x2="16" y1="21" y2="21"></line>
-          <line x1="12" x2="12" y1="17" y2="21"></line>
-        </svg>
+      <div className="aspect-video w-full overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          className="w-full h-full object-cover transition-transform hover:scale-105"
+        />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{project.title}</h3>

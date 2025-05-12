@@ -24,16 +24,15 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-4 flex justify-center">
             <div 
-              className="rounded-lg overflow-hidden shadow-xl w-40 h-48 cursor-pointer hover:scale-105 transition-transform"
+              className="rounded-lg overflow-hidden shadow-xl w-64 h-68 cursor-pointer hover:scale-105 transition-transform"
               onClick={() => setShowProfileImage(true)}
             >
               {/* Passport size photo */}
-              <div className="bg-accent/20 w-full h-full flex items-center justify-center text-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
+              <img 
+                src="/profile.jpg" 
+                alt="Abishek B" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           
@@ -86,13 +85,11 @@ const About = () => {
           </DialogHeader>
           <div className="flex justify-center">
             <div className="rounded-lg overflow-hidden shadow-xl max-w-full">
-              {/* Use actual image when available */}
-              <div className="bg-accent/20 w-96 h-96 flex items-center justify-center text-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </div>
+              <img 
+                src="/profile.jpg" 
+                alt="Abishek B" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </DialogContent>

@@ -20,10 +20,10 @@ const SkillCategory = ({ title, skills }: { title: string; skills: SkillProps[] 
               {skill.level}%
             </Badge>
           </div>
-          <div className="w-full bg-secondary/50 rounded-full h-2.5">
+          <div className="w-full bg-secondary/30 rounded-full h-3">
             <div 
               className={cn(
-                "h-2.5 rounded-full bg-gradient-to-r from-accent/70 to-accent", 
+                "h-3 rounded-full bg-gradient-to-r from-accent/60 to-accent", 
                 skill.className
               )} 
               style={{ width: `${skill.level}%` }}
@@ -57,7 +57,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-16 px-4 bg-gradient-to-b from-background to-secondary/20">
+    <section id="skills" className="py-16 px-4 bg-gradient-to-b from-background to-secondary/10">
       <div className="container mx-auto">
         <h2 className="section-heading">My Skills</h2>
         
