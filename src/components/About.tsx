@@ -1,11 +1,19 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { 
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle
+} from "@/components/ui/dialog";
 
 const About = () => {
+  const [showResume, setShowResume] = useState(false);
+  const [showProfileImage, setShowProfileImage] = useState(false);
+  
   const openResume = () => {
-    // Create a link to open the PDF in a new tab
-    // Replace with actual PDF path when it's available
-    window.open('/resume.pdf', '_blank');
+    setShowResume(true);
   };
 
   return (
@@ -15,10 +23,13 @@ const About = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-4 flex justify-center">
-            <div className="rounded-lg overflow-hidden shadow-xl w-64 h-68">
-              {/* Replace with actual image when available */}
+            <div 
+              className="rounded-lg overflow-hidden shadow-xl w-40 h-48 cursor-pointer hover:scale-105 transition-transform"
+              onClick={() => setShowProfileImage(true)}
+            >
+              {/* Passport size photo */}
               <div className="bg-accent/20 w-full h-full flex items-center justify-center text-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
@@ -50,6 +61,42 @@ const About = () => {
           </div>
         </div>
       </div>
+      
+      {/* Resume Dialog */}
+      <Dialog open={showResume} onOpenChange={setShowResume}>
+        <DialogContent className="max-w-4xl h-[80vh]">
+          <DialogHeader>
+            <DialogTitle>My Resume</DialogTitle>
+          </DialogHeader>
+          <div className="h-full">
+            <iframe 
+              src="/resume.pdf" 
+              className="w-full h-full border-0"
+              title="Resume"
+            ></iframe>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
+      {/* Profile Image Dialog */}
+      <Dialog open={showProfileImage} onOpenChange={setShowProfileImage}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Abishek B</DialogTitle>
+          </DialogHeader>
+          <div className="flex justify-center">
+            <div className="rounded-lg overflow-hidden shadow-xl max-w-full">
+              {/* Use actual image when available */}
+              <div className="bg-accent/20 w-96 h-96 flex items-center justify-center text-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

@@ -23,8 +23,8 @@ const Index = () => {
       <Contact />
       
       <footer className="bg-primary py-6">
-        <div className="container text-center">
-          {/* Footer content removed as requested */}
+        <div className="container text-center text-white text-sm">
+          © 2025 Abishek. All rights reserved.
         </div>
       </footer>
     </div>
