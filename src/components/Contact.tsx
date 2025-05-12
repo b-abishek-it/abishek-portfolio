@@ -56,7 +56,7 @@ const Contact = () => {
           <p className="text-muted-foreground">Let's work together on your next project!</p>
           <Button
             className="mt-4 bg-accent hover:bg-accent/90"
-            onClick={() => window.location.href = "mailto:your-email@example.com"}
+            onClick={() => window.location.href = "mailto:itabishek7@gmail.com"}
           >
             Get In Touch
           </Button>
