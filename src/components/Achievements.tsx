@@ -21,25 +21,25 @@ const Achievements = () => {
       id: 1, 
       image: "/C1.jpg", 
       title: "Introduction to Microsoft Excel",
-      description: "Completed comprehensive Microsoft Excel training covering advanced formulas, data analysis, and visualization techniques."
+      
     },
     { 
       id: 2, 
       image: "/C2.jpg", 
       title: "TCS iON Career Edge - Young Professional",
-      description: "Successfully completed the TCS iON Career Edge program designed to enhance workplace readiness and professional skills."
+      
     },
     { 
       id: 3, 
       image: "/C3.jpg", 
       title: "Workshop",
-      description: "Participated in an intensive hands-on workshop focused on emerging technologies in web development and cloud computing."
+     
     },
     { 
       id: 4, 
       image: "/C4.jpg", 
       title: "Internship", 
-      description: "Completed a valuable internship experience focusing on full-stack development with React and Node.js technologies."
+      
     }
   ];
 
@@ -122,9 +122,6 @@ const Achievements = () => {
               <DialogTitle className="text-center text-xl">
                 {selectedAchievement !== null && achievements[selectedAchievement].title}
               </DialogTitle>
-              <DialogDescription>
-                {selectedAchievement !== null && achievements[selectedAchievement].description}
-              </DialogDescription>
             </DialogHeader>
             <div className="flex justify-center p-4">
               <div className="w-full aspect-[4/3] rounded-md overflow-hidden">
