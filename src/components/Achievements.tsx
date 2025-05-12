@@ -16,10 +16,10 @@ const Achievements = () => {
   
   // Replace with actual achievement data when available
   const achievements = [
-    { id: 1, image: "/achievement1.jpg", title: "Excellence Award 2023" },
-    { id: 2, image: "/achievement2.jpg", title: "Best Developer Award" },
-    { id: 3, image: "/achievement3.jpg", title: "Hackathon Winner" },
-    { id: 4, image: "/achievement4.jpg", title: "Outstanding Project Award" }
+    { id: 1, image: "/public/c1.jpg", title: "Introduction to Microsoft Excel" },
+    { id: 2, image: "/public/C2.jpg", title: "TCS iON Career Edge - Young Professional" },
+    { id: 3, image: "/public/C3.jpg", title: "Workshop" },
+    { id: 4, image: "/public/C4.jpg", title: "Internship" }
   ];
 
   const nextImage = () => {
