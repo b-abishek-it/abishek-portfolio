@@ -39,7 +39,7 @@ const About = () => {
           
           <div className="md:col-span-8">
             <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2">
-              Hello, I'm <span className="text-accent">Abishek B</span>
+              Hello, I'm <span className="text-accent">Abishek</span>
             </h1>
             <h4 className="text-xl text-muted-foreground mb-4">Full Stack Developer | Prompt Engineer</h4>
             
