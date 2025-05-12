@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
@@ -66,10 +67,11 @@ const About = () => {
         <DialogContent className="max-w-4xl h-[80vh]">
           <DialogHeader>
             <DialogTitle>My Resume</DialogTitle>
+            <DialogDescription>View my professional experience and skills</DialogDescription>
           </DialogHeader>
           <div className="h-full">
             <iframe 
-              src="/public/resume.pdf" 
+              src="/resume.pdf" 
               className="w-full h-full border-0"
               title="Resume"
             ></iframe>
@@ -82,11 +84,12 @@ const About = () => {
         <DialogContent className="max-w-lg">
           <DialogHeader>
             <DialogTitle>Abishek B</DialogTitle>
+            <DialogDescription>Full Stack Developer | Prompt Engineer</DialogDescription>
           </DialogHeader>
           <div className="flex justify-center">
             <div className="rounded-lg overflow-hidden shadow-xl max-w-full">
               <img 
-                src="/profile.jpg" 
+                src="/pic.png" 
                 alt="Abishek B" 
                 className="w-full h-full object-cover"
               />

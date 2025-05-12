@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
@@ -14,12 +15,32 @@ const Achievements = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedAchievement, setSelectedAchievement] = useState<number | null>(null);
   
-  // Replace with actual achievement data when available
+  // Achievement data with descriptions
   const achievements = [
-    { id: 1, image: "/C1.jpg", title: "Introduction to Microsoft Excel" },
-    { id: 2, image: "/C2.jpg", title: "TCS iON Career Edge - Young Professional" },
-    { id: 3, image: "/C3.jpg", title: "Workshop" },
-    { id: 4, image: "/C4.jpg", title: "Internship" }
+    { 
+      id: 1, 
+      image: "/C1.jpg", 
+      title: "Introduction to Microsoft Excel",
+      description: "Completed comprehensive Microsoft Excel training covering advanced formulas, data analysis, and visualization techniques."
+    },
+    { 
+      id: 2, 
+      image: "/C2.jpg", 
+      title: "TCS iON Career Edge - Young Professional",
+      description: "Successfully completed the TCS iON Career Edge program designed to enhance workplace readiness and professional skills."
+    },
+    { 
+      id: 3, 
+      image: "/C3.jpg", 
+      title: "Workshop",
+      description: "Participated in an intensive hands-on workshop focused on emerging technologies in web development and cloud computing."
+    },
+    { 
+      id: 4, 
+      image: "/C4.jpg", 
+      title: "Internship", 
+      description: "Completed a valuable internship experience focusing on full-stack development with React and Node.js technologies."
+    }
   ];
 
   const nextImage = () => {
@@ -45,11 +66,11 @@ const Achievements = () => {
           <img 
             src={achievements[currentImage].image} 
             alt={achievements[currentImage].title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
           
           <div className="absolute bottom-0 left-0 right-0 py-4 px-6 bg-gradient-to-t from-black/70 to-transparent">
-            <p className="text-white font-medium text-lg">Achievement {currentImage + 1} of {achievements.length}</p>
+            <p className="text-white font-medium text-lg">{achievements[currentImage].title}</p>
           </div>
           
           {/* Navigation buttons */}
@@ -101,6 +122,9 @@ const Achievements = () => {
               <DialogTitle className="text-center text-xl">
                 {selectedAchievement !== null && achievements[selectedAchievement].title}
               </DialogTitle>
+              <DialogDescription>
+                {selectedAchievement !== null && achievements[selectedAchievement].description}
+              </DialogDescription>
             </DialogHeader>
             <div className="flex justify-center p-4">
               <div className="w-full aspect-[4/3] rounded-md overflow-hidden">
@@ -108,7 +132,7 @@ const Achievements = () => {
                   <img 
                     src={achievements[selectedAchievement].image} 
                     alt={achievements[selectedAchievement].title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 )}
               </div>
