@@ -1,10 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { X, Menu } from 'lucide-react';
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('about');
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,7 +16,7 @@ const Navbar = () => {
       setScrolled(scrollPosition > 10);
       
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'achievements', 'contact'];
+      const sections = ['about', 'skills', 'projects', 'achievements', 'contact'];
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element && scrollPosition >= element.offsetTop - 100) {
@@ -27,6 +31,7 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    setMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
       window.scrollTo({
@@ -35,6 +40,8 @@ const Navbar = () => {
       });
     }
   };
+
+  const navItems = ['About', 'Skills', 'Projects', 'Achievements', 'Contact'];
 
   return (
     <nav 
@@ -47,7 +54,7 @@ const Navbar = () => {
         <div className="text-xl font-bold font-heading text-accent">ABISHEK B</div>
         
         <div className="hidden md:flex space-x-8">
-          {['Home', 'About', 'Skills', 'Projects', 'Achievements', 'Contact'].map((item) => (
+          {navItems.map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
@@ -62,15 +69,39 @@ const Navbar = () => {
         </div>
         
         <div className="md:hidden">
-          <button className="p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            className="p-2"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X size={24} />
+            ) : (
+              <Menu size={24} />
+            )}
           </button>
         </div>
       </div>
+
+      {/* Mobile menu dropdown */}
+      {mobileMenuOpen && isMobile && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white/95 shadow-lg backdrop-blur-sm">
+          <div className="py-4 flex flex-col">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item.toLowerCase())}
+                className={cn(
+                  "py-3 px-8 text-left text-sm font-medium hover:bg-accent/10 hover:text-accent transition-colors",
+                  activeSection === item.toLowerCase() ? "text-accent" : "text-foreground"
+                )}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
