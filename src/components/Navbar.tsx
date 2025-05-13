@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { X, Menu } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -67,11 +66,9 @@ const Navbar = () => {
               {item}
             </button>
           ))}
-          <ThemeToggle />
         </div>
         
         <div className="md:hidden flex items-center space-x-4">
-          <ThemeToggle />
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
             className="p-2"
