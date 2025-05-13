@@ -18,9 +18,9 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="min-h-screen pt-24 px-4 bg-secondary/30">
+    <section id="about" className="min-h-screen pt-24 px-4 bg-secondary/30 dark:bg-gray-900/50">
       <div className="container mx-auto">
-        <h2 className="section-heading">About Me</h2>
+        <h2 className="section-heading dark:text-white">About Me</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-4 flex justify-center">
@@ -38,12 +38,12 @@ const About = () => {
           </div>
           
           <div className="md:col-span-8">
-            <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold font-heading mb-2 dark:text-white">
               Hello, I'm <span className="text-accent">Abishek</span>
             </h1>
-            <h4 className="text-xl text-muted-foreground mb-4">Full Stack Developer | Prompt Engineer</h4>
+            <h4 className="text-xl text-muted-foreground dark:text-gray-300 mb-4">Full Stack Developer | Prompt Engineer</h4>
             
-            <div className="space-y-4 text-muted-foreground">
+            <div className="space-y-4 text-muted-foreground dark:text-gray-300">
               <p>
                 I'm currently pursuing a degree in Information Technology Engineering. I'm passionate about coding, 
                 building innovative projects, and learning technologies like React and the MERN stack.
@@ -55,7 +55,7 @@ const About = () => {
               </p>
             </div>
             
-            <Button onClick={openResume} className="mt-6 bg-accent hover:bg-accent/90">
+            <Button onClick={openResume} className="mt-6 bg-accent hover:bg-accent/90 dark:bg-accent dark:hover:bg-accent/80">
               View Resume
             </Button>
           </div>
@@ -64,12 +64,12 @@ const About = () => {
       
       {/* Resume Dialog */}
       <Dialog open={showResume} onOpenChange={setShowResume}>
-        <DialogContent className="max-w-4xl h-[80vh]">
+        <DialogContent className="max-w-5xl max-h-[90vh] w-[90vw]">
           <DialogHeader>
             <DialogTitle>My Resume</DialogTitle>
             <DialogDescription>View my professional experience and skills</DialogDescription>
           </DialogHeader>
-          <div className="h-full">
+          <div className="h-[80vh] w-full">
             <iframe 
               src="/resume.pdf" 
               className="w-full h-full border-0"

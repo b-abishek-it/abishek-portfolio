@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { X, Menu } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -47,28 +48,30 @@ const Navbar = () => {
     <nav 
       className={cn(
         "fixed top-0 left-0 w-full py-4 z-50 transition-all duration-300",
-        scrolled ? "bg-white/90 shadow-md backdrop-blur-sm" : "bg-transparent"
+        scrolled ? "bg-white/90 dark:bg-gray-900/90 shadow-md backdrop-blur-sm" : "bg-transparent"
       )}
     >
       <div className="container flex justify-between items-center">
-        <div className="text-xl font-bold font-heading text-accent">ABISHEK B</div>
+        <div className="text-xl font-bold font-heading text-accent dark:text-accent">ABISHEK B</div>
         
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
               className={cn(
                 "text-sm font-medium hover:text-accent transition-colors",
-                activeSection === item.toLowerCase() ? "text-accent" : "text-foreground"
+                activeSection === item.toLowerCase() ? "text-accent" : "text-foreground dark:text-white"
               )}
             >
               {item}
             </button>
           ))}
+          <ThemeToggle />
         </div>
         
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-4">
+          <ThemeToggle />
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
             className="p-2"
@@ -85,7 +88,7 @@ const Navbar = () => {
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && isMobile && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white/95 shadow-lg backdrop-blur-sm">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 shadow-lg backdrop-blur-sm">
           <div className="py-4 flex flex-col">
             {navItems.map((item) => (
               <button
@@ -93,7 +96,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection(item.toLowerCase())}
                 className={cn(
                   "py-3 px-8 text-left text-sm font-medium hover:bg-accent/10 hover:text-accent transition-colors",
-                  activeSection === item.toLowerCase() ? "text-accent" : "text-foreground"
+                  activeSection === item.toLowerCase() ? "text-accent" : "text-foreground dark:text-white"
                 )}
               >
                 {item}
