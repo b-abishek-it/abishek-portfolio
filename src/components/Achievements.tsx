@@ -19,24 +19,30 @@ const Achievements = () => {
   const achievements = [
     { 
       id: 1, 
+      image: "/C5.jpg", 
+      title: "Crash Course On Python",
+      
+    },
+    { 
+      id: 2, 
       image: "/C1.jpg", 
       title: "Introduction to Microsoft Excel",
       
     },
     { 
-      id: 2, 
+      id: 3, 
       image: "/C2.jpg", 
       title: "TCS iON Career Edge - Young Professional",
       
     },
     { 
-      id: 3, 
+      id: 4, 
       image: "/C3.jpg", 
       title: "Workshop",
      
     },
     { 
-      id: 4, 
+      id: 5, 
       image: "/C4.jpg", 
       title: "Internship", 
       
