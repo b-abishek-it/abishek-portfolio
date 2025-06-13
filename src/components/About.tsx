@@ -71,7 +71,7 @@ const About = () => {
           </DialogHeader>
           <div className="h-[80vh] w-full">
             <iframe 
-              src="/resume.pdf" 
+              src="/Resume.pdf" 
               className="w-full h-full border-0"
               title="Resume"
             ></iframe>
